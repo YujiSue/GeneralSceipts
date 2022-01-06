@@ -1,7 +1,7 @@
 English/日本語
+# GeneralScripts
+## Introduction / はじめに
 
-# Introduction / はじめに
 
-
-# List of scripts / スクリプト一覧
+## List of scripts / スクリプト一覧
 

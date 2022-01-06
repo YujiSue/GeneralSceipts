@@ -15,10 +15,8 @@ English/日本語
 |[Docker](https://docs.docker.com/)|20.10.12|
 |[CUDA](https://developer.nvidia.com/cuda-toolkit)|11.5|
 |[CuDNN](https://developer.nvidia.com/cudnn)|8.3|
-|[Chrome](https://www.google.com/intl/ja_jp/chrome/)|Stable latest|
 |[sqlite3](https://www.sqlite.org/index.html)|3.22.0|
 |[java](https://openjdk.java.net/)|11.0.13|
-|[ImageJ](https://imagej.nih.gov/ij/index.html)|1.53k|
 |[ffmpeg](https://ffmpeg.org/)|3.4.8|
 |[OpenCV](https://opencv.org/)|4.5.5|
 |[cURL](https://curl.se/)|7.58.0|
@@ -29,7 +27,11 @@ English/日本語
 |[Node.js](https://nodejs.org/ja/)|16.13.1|
 |[npm](https://www.npmjs.com/)|8.1.2|
 |[cifs](http://cifs.com/jp/)|6.8|
-|[VSCode](https://azure.microsoft.com/ja-jp/products/visual-studio-code/)|1.63.2|
+
+2. bioinfo_tools_install(_J).py
+
+|Name / 名称|Version / バージョン|
+|---|---|
 |[TorrentSuite VaraintCaller](http://updates.iontorrent.com/tvc_standalone/)|5.12|
 |[SAMtools](https://github.com/samtools/samtools)|1.14|
 |[BWA](https://sourceforge.net/projects/bio-bwa/files/)|0.7.17|

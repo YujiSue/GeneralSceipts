@@ -2,7 +2,11 @@ English/日本語
 # GeneralScripts
 ## Introduction / はじめに
 
-## Hardware / 
+
+## About scripts / 各スクリプトについて
+
+
+## Test / テスト
 ```
 $ cat /etc/lsb-release
 DISTRIB_ID=Ubuntu
@@ -13,9 +17,5 @@ DISTRIB_DESCRIPTION="Ubuntu 18.04.6 LTS"
 $ lspci | grep -i nvidia
 03:00.0 VGA compatible controller: NVIDIA Corporation GK110GL [Quadro K5200] (rev a1)
 03:00.1 Audio device: NVIDIA Corporation GK110 HDMI Audio (rev a1)
-
-
 ```
-
-## List of scripts / スクリプト一覧
 

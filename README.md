@@ -40,6 +40,7 @@ English/日本語
 |[Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)|2.4.4|
 |[STAR](https://github.com/alexdobin/STAR)|2.7.9a|
 |[IGV](https://software.broadinstitute.org/software/igv/)|2.11.9|
+|[HTSeq](https://htseq.readthedocs.io/en/master/)|1.99.2|
 |[Cufflinks](https://github.com/cole-trapnell-lab/cufflinks)|2.2.1|
 |[MACS](https://github.com/macs3-project/MACS)|2.2.7.1|
 |[MEME Suite](https://meme-suite.org/meme/)|5.4.1|
@@ -61,6 +62,5 @@ $ cat /proc/driver/nvidia/version
 NVRM version: NVIDIA UNIX x86_64 Kernel Module  470.86  Tue Oct 26 21:55:45 UTC 2021
 GCC version:  gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)
 ```
-### Run script / スクリプトの実行
 
 

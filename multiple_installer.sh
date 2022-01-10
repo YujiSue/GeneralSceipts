@@ -7,7 +7,7 @@ echo 'Preparation'
 sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu bionic-security main"
 sudo apt update
 sudo apt -y upgrade
-sudo apt install -y build-essential ca-certificates gnupg lsb-release uuid-dev \
+sudo apt install -y build-essential ca-certificates gnupg lsb-release uuid-dev xz-utils wget zip unzip zlib1g zlib1g-dev \
 libbz2-dev libboost-dev libdb-dev libreadline-dev libffi-dev libgdbm-dev \
 libjpeg-dev liblzma-dev libpng-dev libtiff5-dev libwebp-dev \
 libopenexr-dev libgdal-dev \
@@ -15,8 +15,7 @@ libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev \
 libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm \
 libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine2-dev \
 libncurses5-dev libncursesw5-dev libtbb-dev libeigen3-dev libssl-dev \
-libvtk6-dev qt5-default tk-dev \
-doxygen git xz-utils wget zip unzip zlib1g zlib1g-dev
+libvtk6-dev qt5-default tk-dev
 
 ###########################################################
 #Version check
@@ -29,6 +28,21 @@ PYTHON_VER=3.7.x
 #Directory set
 WORK_SPACE=$(echo $HOME)
 TEMPORARY=$WORK_SPACE/Downloads
+
+###########################################################
+#mozc install for Japanese input
+echo 'mozc install'
+sudo apt update
+sudo apt install -y ibus-mozc
+ibus-daemon -d -x
+echo 'Completed.'
+
+###########################################################
+#git install
+echo 'git install'
+sudo apt update
+sudo apt install -y git
+echo 'Completed.'
 
 ###########################################################
 #Clang install
@@ -51,6 +65,13 @@ make -j8
 sudo make install
 rm -r cmake*
 cd $WORK_SPACE
+echo 'Completed.'
+
+###########################################################
+#doxygen install
+echo 'doxygen install'
+sudo apt update
+sudo apt install -y doxygen
 echo 'Completed.'
 
 ###########################################################
@@ -205,11 +226,28 @@ sudo ldconfig
 echo 'Completed.'
 
 ###########################################################
-#Extra Process
-bash $WORK_SPACE/Scripts/pyinstall.sh
+# Install python packages
+pip install numpy
+pip install pandas
+pip install matplotlib
+pip install opencv-python
+pip install scikit-learn
+pip install hmmlearn
+pip install umap-learn
+pip install tensorflow==2.7.0
+pip install torch
+pip install openpyxl
+pip install python-docx
+pip install python-pptx
+pip install reportlab
+pip install HTSeq
+pip install selenium
+pip install beautifulsoup4
+
 sudo apt autoremove -y
 
 ###########################################################
+#Check version
 echo 'Full install completed.'
 echo 'clang > '$(clang --version | head -1)
 echo 'CUDA > '$(nvcc -V | tail -1)
@@ -217,6 +255,9 @@ echo 'python > '$(python -V)
 echo 'pip > '$(pip -V)
 echo 'java > '$(java -version)
 echo 'cmake > '$(cmake --version | head -1)
+echo 'doxygen > '$(doxygen --version)
+echo 'mozc > '$(ibus-daemon -V)
+echo 'git > '$(git --version)
 echo 'cifs > '$(mount.cifs -V)
 echo 'clamAV > '$(clamd -V)
 echo 'Node.js > '$(node -v)

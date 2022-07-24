@@ -9,7 +9,7 @@
 
 # Description
 ## multiple_installer.sh  
-This is a bash script to install the following softwares.
+This is a bash script to install the following software.
   
 |Name|Version|
 |---|---|

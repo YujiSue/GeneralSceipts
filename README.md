@@ -1,66 +1,155 @@
-English/日本語
+[English](#GeneralScripts)/[日本語](#このリポジトリについて)
 # GeneralScripts
-## Introduction / はじめに
 
-
-## About scripts / 各スクリプトについて
-
-1. multiple_installer.sh
-
-
-|Name / 名称|Version / バージョン|
+# File list
+|Name|Brief description|
 |---|---|
-|[clang](https://github.com/llvm/llvm-project)|13.0.1|
-|[cmake](https://cmake.org/)|3.22.1|
-|[Docker](https://docs.docker.com/)|20.10.12|
-|[CUDA](https://developer.nvidia.com/cuda-toolkit)|11.5|
-|[CuDNN](https://developer.nvidia.com/cudnn)|8.3|
-|[sqlite3](https://www.sqlite.org/index.html)|3.22.0|
-|[java](https://openjdk.java.net/)|11.0.13|
-|[ffmpeg](https://ffmpeg.org/)|3.4.8|
-|[OpenCV](https://opencv.org/)|4.5.5|
-|[cURL](https://curl.se/)|7.58.0|
-|[clamAV](http://www.clamav.net/)|0.103.2|
-|[R](https://www.r-project.org/)|4.1.2|
-|[Python3](https://www.python.org/)|3.7.5|
-|[pip](https://pypi.org/project/pip/)|21.3.1|
-|[Node.js](https://nodejs.org/ja/)|16.13.1|
-|[npm](https://www.npmjs.com/)|8.1.2|
-|[cifs](http://cifs.com/jp/)|6.8|
+|multiple_installer.sh|Shell script to install basic apps and libraries required for the data science|
+|||
 
-2. bioinfo_tools_install(_J).py
-
-|Name / 名称|Version / バージョン|
+# Description
+## multiple_installer.sh  
+This is a bash script to install the following softwares.
+  
+|Name|Version|
 |---|---|
-|[TorrentSuite VaraintCaller](http://updates.iontorrent.com/tvc_standalone/)|5.12|
-|[SAMtools](https://github.com/samtools/samtools)|1.14|
-|[BWA](https://sourceforge.net/projects/bio-bwa/files/)|0.7.17|
-|[Picard](https://broadinstitute.github.io/picard/)|2.26.9|
-|[GATK](https://gatk.broadinstitute.org/hc/en-us)|4.2.4.0|
-|[Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml)|2.4.4|
-|[STAR](https://github.com/alexdobin/STAR)|2.7.9a|
-|[IGV](https://software.broadinstitute.org/software/igv/)|2.11.9|
-|[HTSeq](https://htseq.readthedocs.io/en/master/)|1.99.2|
-|[Cufflinks](https://github.com/cole-trapnell-lab/cufflinks)|2.2.1|
-|[MACS](https://github.com/macs3-project/MACS)|2.2.7.1|
-|[MEME Suite](https://meme-suite.org/meme/)|5.4.1|
+|NVIDIA GPU Driver|470|
+|git|Depend on **apt-get** package|
+|Clang|Refer to https://apt.llvm.org/llvm.sh|
+|CMake|3.22.5|
+|Perl|Depend on **apt-get** package|
+|GNU Fortran|Depend on **apt-get** package|
+|CUDA|11.5|
+|CuDNN|8.3|
+|Python3(+pip)|3.7|
+|OpenJDK|Depend on **apt-get** package|
+|Docker|https://download.docker.com/linux/ubuntu/dists/bionic/stable/|
+|NVIDIA Docker|https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list|
+|MySQL+SQLite|Depend on **apt-get** package|
+|npm|Depend on **apt-get** package|
+|NodeJS|[n (npm)](https://www.npmjs.com/package/n) stable ver.|
+|R|Refer to https://cloud.r-project.org/bin/linux/ubuntu|
+|Graphviz|Depend on **apt-get** package|
+|OpenCV|4.5.5|
+|FFmpeg|Depend on **apt-get** package|
+|cURL|Depend on **apt-get** package|
+|cifs|Depend on **apt-get** package|
+|clamAV|Depend on **apt-get** package|
+|doxygen|Depend on **apt-get** package|
+|mozc|Depend on **apt-get** package|
+|OpenSSH(server)+ufw|Depend on **apt-get** package|
+|||  
 
-## Test / テスト
-### Test environment / テスト環境
+# Usage
+## - multiple_installer.sh  
+
+> Requirement:  
+> Ubuntu 18.04  
+> NVIDIA GPU  
+  
+### 1. Download the script
+Run the command on the terminal app.
+
 ```
-$ cat /etc/lsb-release
-DISTRIB_ID=Ubuntu
-DISTRIB_RELEASE=18.04
-DISTRIB_CODENAME=bionic
-DISTRIB_DESCRIPTION="Ubuntu 18.04.6 LTS"
-
-$ lspci | grep -i nvidia
-03:00.0 VGA compatible controller: NVIDIA Corporation GK110GL [Quadro K5200] (rev a1)
-03:00.1 Audio device: NVIDIA Corporation GK110 HDMI Audio (rev a1)
-
-$ cat /proc/driver/nvidia/version
-NVRM version: NVIDIA UNIX x86_64 Kernel Module  470.86  Tue Oct 26 21:55:45 UTC 2021
-GCC version:  gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)
+$ wget https://raw.githubusercontent.com/YujiSue/GeneralScripts/main/multiple_installer.sh
 ```
 
+### 2. Download CUDA package and CuDNN source code to "Downloads" directory  
+  
+\- CUDA  
+```
+$ wget https://developer.download.nvidia.com/compute/cuda/11.5.1/local_installers/cuda-repo-ubuntu1804-11-5-local_11.5.1-495.29.05-1_amd64.deb
+```
+  
+\- CuDNN  
+Download "cudnn-linux-x86_64-8.3.1.22_cuda11.5-archive.tar.xz" from [NVIDIA download site](https://developer.nvidia.com/cudnn-download-survey)\*1.
+  
+\*1 Require NVIDIA Developer's account. Please create your account if do not have. 
+  
+### 3. Run the script
+Run the following command.  
+To run the sudo command internally, you will be asked for your password first.  
+After that, leave it until the end of the process.
 
+```
+$ bash {$path_to_script}/multiple_installer.sh
+```
+  
+
+
+---
+---
+
+# このリポジトリについて
+雑多なスクリプト置き場（予定）
+
+# ファイル一覧
+|名称|説明|
+|---|---|
+|multiple_installer.sh|データサイエンスでよく使う基本アプリを一括インストールするためのスクリプト|
+|||
+
+# 詳細
+## multiple_installer.sh
+以下のソフトをインストールするためのbashスクリプトです。
+
+|名称|バージョン|
+|---|---|
+|NVIDIA GPU Driver|470|
+|git|Depend on **apt-get** package|
+|Clang|Refer to https://apt.llvm.org/llvm.sh|
+|CMake|3.22.5|
+|Perl|Depend on **apt-get** package|
+|GNU Fortran|Depend on **apt-get** package|
+|CUDA|11.5|
+|CuDNN|8.3|
+|Python3(+pip)|3.7|
+|OpenJDK|Depend on **apt-get** package|
+|Docker|https://download.docker.com/linux/ubuntu/dists/bionic/stable/|
+|NVIDIA Docker|https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list|
+|MySQL+SQLite|Depend on **apt-get** package|
+|npm|Depend on **apt-get** package|
+|NodeJS|[n (npm)](https://www.npmjs.com/package/n) stable ver.|
+|R|Refer to https://cloud.r-project.org/bin/linux/ubuntu|
+|Graphviz|Depend on **apt-get** package|
+|OpenCV|4.5.5|
+|FFmpeg|Depend on **apt-get** package|
+|cURL|Depend on **apt-get** package|
+|cifs|Depend on **apt-get** package|
+|clamAV|Depend on **apt-get** package|
+|doxygen|Depend on **apt-get** package|
+|mozc|Depend on **apt-get** package|
+|OpenSSH(server)+ufw|Depend on **apt-get** package|
+|||  
+
+# 使用法
+## - multiple_installer.sh  
+
+> 必要要件:  
+> Ubuntu 18.04 (English)  
+> NVIDIA GPU  
+  
+### 1. まずはスクリプトのダウンロード
+以下のコマンドを実行してください。  
+```
+$ wget https://raw.githubusercontent.com/YujiSue/GeneralScripts/main/multiple_installer.sh
+```
+
+### 2. CUDAパッケージとCuDNNのソースコードを"Downloads"フォルダにダウンロード  
+  
+\- CUDA  
+```
+$ wget https://developer.download.nvidia.com/compute/cuda/11.5.1/local_installers/cuda-repo-ubuntu1804-11-5-local_11.5.1-495.29.05-1_amd64.deb
+```
+  
+\- CuDNN  
+CuDNNのソースコードは、[NVIDIA download site](https://developer.nvidia.com/cudnn-download-survey)から"cudnn-linux-x86_64-8.3.1.22_cuda11.5-archive.tar.xz"をダウンロードしてください。  
+ただし、NVIDIA Developerのアカウントが必要になるので、ない人は作成をお願いします（もちろン無料です）。  
+  
+### 3. スクリプトの実行
+```
+$ bash {$path_to_script}/multiple_installer.sh
+```
+
+内部でsudoコマンドを走らせるため、最初にパスワードを聞かれるので入力してください。  
+そのあとは終了まで放置です。
